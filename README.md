@@ -12,4 +12,4 @@ For example, this matrix has 4 islands.
 1 1 0 0 1\
 1 1 0 0 1
 
-Depth First Search(DFS) 
+Depth First Search(DFS) walking forward in a direction until finding water; memorized visited.  
