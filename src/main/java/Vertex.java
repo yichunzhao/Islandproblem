@@ -10,16 +10,19 @@ import static java.util.stream.Collectors.toList;
 @Data
 @AllArgsConstructor
 public class Vertex {
-    private boolean land;
+    private int land;
     private Vertex upperVertex;
     private Vertex lowerVertex;
     private Vertex leftVertex;
     private Vertex rightVertex;
+
+    private Coordinate coordinate;
 
     public List<Vertex> allAdjacentVertices() {
         return Stream.of(upperVertex, lowerVertex, leftVertex, rightVertex)
                 .filter(v -> Optional.ofNullable(v).isPresent())
                 .collect(toList());
     }
+
 
 }

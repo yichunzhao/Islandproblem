@@ -11,7 +11,7 @@ public class Graph<V extends Vertex> {
 
     private List<V> vertices = new ArrayList<>();
 
-    public void addNode(V vertex) {
+    public void addVertex(V vertex) {
         vertices.add(vertex);
     }
 

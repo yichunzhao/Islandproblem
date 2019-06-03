@@ -7,6 +7,8 @@ public class VertexTest {
     @Test
     public void createVertexFromConstructor(){
 
+
+
     }
 
 }
