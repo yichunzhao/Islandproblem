@@ -1,9 +1,13 @@
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-@AllArgsConstructor
 @Getter
+@Builder
+@AllArgsConstructor
+@EqualsAndHashCode
 public class Coordinate {
-    private int x;
-    private int y;
+    private int row;
+    private int col;
 }

@@ -1,4 +1,5 @@
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
@@ -9,8 +10,9 @@ import static java.util.stream.Collectors.toList;
 
 @Data
 @AllArgsConstructor
+@Builder
 public class Vertex {
-    private int land;
+    private int value;
     private Vertex upperVertex;
     private Vertex lowerVertex;
     private Vertex leftVertex;
