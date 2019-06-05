@@ -17,7 +17,7 @@ public class DefaultTransformer implements Transformer {
         return null;
     }
 
-    private Graph sketchGraph(@NotNull Matrix matrix) {
+    public Graph sketchGraph(@NotNull Matrix matrix) {
 
         Graph<Vertex> graph = new DefaultGraph<>();
 
