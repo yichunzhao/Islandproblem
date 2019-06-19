@@ -1,3 +1,5 @@
+package model;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -6,6 +8,7 @@ public class Matrix {
 
     @Getter
     private int rowNum;  //row
+
     @Getter
     private int colNum;  //col.
 
@@ -18,19 +21,17 @@ public class Matrix {
         matrix = new int[rowNum][colNum];
     }
 
-    public Matrix(int[][] data) {
-        this.rowNum = data.length;
-        this.colNum = data[0].length;
+  public Matrix(int[][] data) {
+    this.rowNum = data.length;
+    this.colNum = data[0].length;
 
-        this.matrix = data;
-    }
+    this.matrix = data;
+  }
 
     public int getValue(int x, int y) {
         if (x > rowNum || y > colNum) throw new IllegalArgumentException("out of boundary");
 
         return matrix[x][y];
-
     }
-
 
 }

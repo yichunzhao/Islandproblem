@@ -1,3 +1,6 @@
+package solver;
+
+import model.*;
 import org.jetbrains.annotations.NotNull;
 
 public class DefaultTransformer implements Transformer {
@@ -14,7 +17,7 @@ public class DefaultTransformer implements Transformer {
 
         }
 
-        return null;
+    return null;
     }
 
     public Graph sketchGraph(@NotNull Matrix matrix) {

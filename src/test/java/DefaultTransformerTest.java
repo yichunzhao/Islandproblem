@@ -1,5 +1,9 @@
+import model.Graph;
+import model.Matrix;
+import model.Vertex;
 import org.junit.Before;
 import org.junit.Test;
+import solver.DefaultTransformer;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;

@@ -1,3 +1,4 @@
+import model.Matrix;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
