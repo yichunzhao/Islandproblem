@@ -11,3 +11,9 @@ For example, this matrix has 4 islands.
 1 1 0 0 1\
 1 1 0 0 1
 
+
+Sub-tasks
+
+* Presenting a matrix in a Graph 
+* Visting all nodes.
+* 
