@@ -51,7 +51,6 @@ public class GridTest {
     @Test
     @DisplayName("calculate adjacent coordinates around r=2,c=2")
     void whenInputCoordinate22_ThenReturn4Adjacent() {
-        Set<String> expected = Stream.of("left", "right", "up", "down").collect(toSet());
         Grid<Integer> grid = new Grid<>(matrix);
         Map<Grid.Dir, Grid.Coordinate> map = grid.adjacentTo(2, 2);
         assertAll(
@@ -88,5 +87,23 @@ public class GridTest {
         });
 
         assertThat(exception.getMessage(), is("rows should have the same length"));
+    }
+
+    @Test
+    void givenRowCol_getElementValue() {
+        Grid<Integer> grid = new Grid<>(matrix);
+        int x23 = grid.value(2, 3);
+        int x00 = grid.value(0, 0);
+
+        assertAll(
+                () -> assertThat(x23, is(0)),
+                () -> assertThat(x00, is(1))
+        );
+    }
+
+    @Test
+    void givenRowColOutOfBoundary_ThenGetException() {
+        Grid<Integer> grid = new Grid<>(matrix);
+        assertThrows(IllegalArgumentException.class, () -> grid.value(7, 7));
     }
 }

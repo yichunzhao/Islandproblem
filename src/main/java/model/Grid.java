@@ -21,11 +21,9 @@ import java.util.Map;
  */
 
 @EqualsAndHashCode
-public class Grid<T> {
+public class Grid<E> {
 
     private static final Map<Dir, int[]> dv = new HashMap<>();
-
-    enum Dir {left, right, up, down}
 
     static {
         dv.put(Dir.left, new int[]{0, -1});
@@ -34,14 +32,16 @@ public class Grid<T> {
         dv.put(Dir.down, new int[]{1, 0});
     }
 
+    enum Dir {left, right, up, down}
+
     @Getter
     private int maxRow;
     @Getter
     private int maxCol;
 
-    private T[][] elements;
+    private E[][] elements;
 
-    public Grid(T[][] elements) {
+    public Grid(E[][] elements) {
         if (!rowsHavingSameLength(elements))
             throw new IllegalArgumentException("rows should have the same length");
         this.elements = elements;
@@ -49,7 +49,7 @@ public class Grid<T> {
         maxCol = elements[1].length;
     }
 
-    private boolean rowsHavingSameLength(final T[][] elements) {
+    private boolean rowsHavingSameLength(final E[][] elements) {
         return Arrays.stream(elements).map(ts -> ts.length).distinct().count() == 1;
     }
 
@@ -87,6 +87,13 @@ public class Grid<T> {
         }
 
         return neighbors;
+    }
+
+    public E value(int r, int c) {
+        if (r > maxRow || r < 0) throw new IllegalArgumentException("row index > rowMax");
+        if (c > maxCol || c < 0) throw new IllegalArgumentException("row index > rowMax");
+
+        return elements[r][c];
     }
 
 }

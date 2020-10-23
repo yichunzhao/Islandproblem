@@ -1,7 +1,13 @@
+import model.Grid;
+import solver.AbstractSolver;
+import solver.IslandSolver;
+import solver.Result;
+
 import java.util.Arrays;
+import java.util.List;
 
 public class SolvingIslandProblem {
-    private final static int[][] matrix = {
+    private final static Integer[][] matrix = {
             {1, 0, 0, 0, 0},
             {0, 0, 1, 1, 0},
             {0, 1, 1, 0, 0},
@@ -12,7 +18,11 @@ public class SolvingIslandProblem {
 
     public static void main(String[] args) {
 
-        //transform matrix into a graph
+
+        Grid<Integer> grid = new Grid<>(matrix);
+
+        AbstractSolver<Integer> solver = new IslandSolver<>(grid);
+        Result<List<IslandSolver.Island>> listResult = solver.solve();
 
 
         System.out.println(Arrays.deepToString(matrix));
