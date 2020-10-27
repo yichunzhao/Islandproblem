@@ -25,12 +25,12 @@ public class IslandSolver<E> extends AbstractSolver<E> {
     }
 
     @Override
-    public Result solve() {
+    public Result solve(Grid.Coordinate source) {
         Result result = Result.create();
         List<Island> islands = new ArrayList<>();
 
         //starting point, and put it in the Q
-        Grid.Coordinate source = Grid.Coordinate.of(0, 0);
+
         //put it in the Q, and keep it until all its neighbors found.
         queue.offer(source);
 

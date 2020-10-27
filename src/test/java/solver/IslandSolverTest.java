@@ -18,6 +18,6 @@ class IslandSolverTest {
     @Test
     void solve() {
         AbstractSolver<Short> solver = new IslandSolver<>(grid);
-        solver.solve();
+        solver.solve(Grid.Coordinate.of(0,0));
     }
 }

@@ -21,7 +21,7 @@ public class SolvingIslandProblem {
 
         AbstractSolver<Integer> solver = new IslandSolver<>(grid);
 
-        Result r = solver.solve();
+        Result r = solver.solve(Grid.Coordinate.of(0,0));
         boolean[][] visited = (boolean[][]) r.get(Result.Key.Visited);
         System.out.println(Arrays.deepToString(visited));
     }

@@ -22,7 +22,7 @@ public abstract class AbstractSolver<E> {
         this.visited = new boolean[mr][mc];
     }
 
-    public abstract Result solve();
+    public abstract Result solve(Grid.Coordinate source);
 
     protected boolean isVisited(Grid.Coordinate coordinate) {
         checkMatrixBound(coordinate);
