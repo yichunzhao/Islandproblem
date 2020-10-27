@@ -1,12 +1,31 @@
 package util;
 
-import lombok.Data;
-
 import java.util.Arrays;
 
-@Data(staticConstructor = "of")
 public class MatrixHelper {
-    void print(int[][] matrix) {
-        Arrays.stream(matrix).forEach(ints -> System.out.println(Arrays.toString(ints)));
+
+    public static <T> String to2DString(T[][] matrix) {
+        StringBuilder sb = new StringBuilder();
+        Arrays.stream(matrix).forEach(row -> sb.append(Arrays.toString(row)).append("\n"));
+        return sb.toString();
     }
+
+    public static String to2DString(boolean[][] matrix) {
+        StringBuilder sb = new StringBuilder();
+        Arrays.stream(matrix).forEach(row -> sb.append(Arrays.toString(row)).append("\n"));
+        return sb.toString();
+    }
+
+    public static void print(Integer[][] matrix) {
+        System.out.println(Arrays.deepToString(matrix));
+    }
+
+    public static void print(int[][] matrix) {
+        System.out.println(Arrays.deepToString(matrix));
+    }
+
+    public static void print(short[][] matrix) {
+        System.out.println(Arrays.deepToString(matrix));
+    }
+
 }
