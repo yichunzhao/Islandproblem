@@ -17,10 +17,7 @@ class IslandSolverTest {
 
     @Test
     void solve() {
-
-        AbstractSolver solver = new IslandSolver<>(grid);
-
-
+        AbstractSolver<Short> solver = new IslandSolver<>(grid);
         solver.solve();
     }
 }

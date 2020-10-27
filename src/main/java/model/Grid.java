@@ -6,7 +6,9 @@ import lombok.ToString;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * A Grid, contains cells, which is located ref. its Coordinate in the matrix.
@@ -33,10 +35,10 @@ public class Grid<E> {
 
     public enum Dir {left, right, up, down}
 
-    private int maxRow;
-    private int maxCol;
+    private final int maxRow;
+    private final int maxCol;
 
-    private E[][] elements;
+    private final E[][] elements;
 
     public Grid(E[][] elements) {
         if (!rowsHavingSameLength(elements))
@@ -94,8 +96,8 @@ public class Grid<E> {
         return neighbors;
     }
 
-    public Map<Dir, Coordinate> adjacentTo(Coordinate co) {
-        return adjacentTo(co.row, co.col);
+    public Set<Coordinate> adjacentTo(Coordinate co) {
+        return new HashSet<>(adjacentTo(co.row, co.col).values());
     }
 
     public E value(int r, int c) {
