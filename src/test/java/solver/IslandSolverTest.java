@@ -4,7 +4,7 @@ import model.Grid;
 import org.junit.jupiter.api.Test;
 
 class IslandSolverTest {
-    private final Integer[][] matrix = {
+    private final Short[][] matrix = {
             {1, 0, 0, 0, 0},
             {0, 0, 1, 1, 0},
             {0, 1, 1, 0, 0},
@@ -13,11 +13,12 @@ class IslandSolverTest {
             {1, 1, 0, 0, 1}
     };
 
-    private Grid<Integer> grid = new Grid<>(matrix);
+    private Grid<Short> grid = new Grid<>(matrix);
 
     @Test
     void solve() {
-        AbstractSolver<Integer> solver = new IslandSolver<>(grid);
+
+        AbstractSolver solver = new IslandSolver<>(grid);
 
 
         solver.solve();

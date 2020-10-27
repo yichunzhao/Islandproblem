@@ -66,8 +66,8 @@ public class GridTest {
     @Test
     void gridMaxRowAndMaxCol_ConsistentWithInputMatrix() {
         Grid<Integer> grid = new Grid<>(matrix);
-        assertThat(grid.getMaxCol(), is(matrix[1].length));
-        assertThat(grid.getMaxRow(), is(matrix.length));
+        assertThat(grid.maxCol(), is(matrix[1].length));
+        assertThat(grid.maxRow(), is(matrix.length));
     }
 
     @Test
@@ -94,9 +94,11 @@ public class GridTest {
         Grid<Integer> grid = new Grid<>(matrix);
         int x23 = grid.value(2, 3);
         int x00 = grid.value(0, 0);
+        int x65 = grid.value(grid.maxRow()-1, grid.maxCol()-1);
 
         assertAll(
                 () -> assertThat(x23, is(0)),
+                () -> assertThat(x00, is(1)),
                 () -> assertThat(x00, is(1))
         );
     }

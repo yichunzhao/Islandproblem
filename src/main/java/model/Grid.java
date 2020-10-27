@@ -1,7 +1,6 @@
 package model;
 
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
@@ -32,11 +31,9 @@ public class Grid<E> {
         dv.put(Dir.down, new int[]{1, 0});
     }
 
-    enum Dir {left, right, up, down}
+    public enum Dir {left, right, up, down}
 
-    @Getter
     private int maxRow;
-    @Getter
     private int maxCol;
 
     private E[][] elements;
@@ -57,12 +54,20 @@ public class Grid<E> {
     @ToString
     @EqualsAndHashCode
     public static class Coordinate {
-        final int rowIndex;
-        final int colIndex;
+        final int row;
+        final int col;
 
         public Coordinate(int[] r_c) {
-            this.rowIndex = r_c[0];
-            this.colIndex = r_c[1];
+            this.row = r_c[0];
+            this.col = r_c[1];
+        }
+
+        public int row() {
+            return row;
+        }
+
+        public int col() {
+            return col;
         }
     }
 
@@ -77,8 +82,8 @@ public class Grid<E> {
 
         for (Map.Entry<Dir, int[]> e : dv.entrySet()) {
             int[] d = e.getValue();
-            if (r + d[0] > maxRow || r + d[0] < 0) continue;
-            if (c + d[1] > maxCol || c + d[1] < 0) continue;
+            if (r + d[0] > maxRow - 1 || r + d[0] < 0) continue;
+            if (c + d[1] > maxCol - 1 || c + d[1] < 0) continue;
 
             int nr = r + d[0];
             int nc = c + d[1];
@@ -89,11 +94,23 @@ public class Grid<E> {
         return neighbors;
     }
 
+    public Map<Dir, Coordinate> adjacentTo(Coordinate co) {
+        return adjacentTo(co.row, co.col);
+    }
+
     public E value(int r, int c) {
         if (r > maxRow || r < 0) throw new IllegalArgumentException("row index > rowMax");
         if (c > maxCol || c < 0) throw new IllegalArgumentException("row index > rowMax");
 
         return elements[r][c];
+    }
+
+    public int maxRow() {
+        return this.maxRow;
+    }
+
+    public int maxCol() {
+        return this.maxCol;
     }
 
 }
