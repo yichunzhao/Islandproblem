@@ -1,4 +1,5 @@
 import model.Grid;
+import solver.AbstractSolver;
 import solver.IslandSolver;
 import solver.Result;
 
@@ -18,12 +19,10 @@ public class SolvingIslandProblem {
         Grid<Integer> grid = new Grid<>(matrix);
         System.out.println(Arrays.deepToString(matrix));
 
-        IslandSolver<Integer> solver = new IslandSolver<>(grid);
-
+        AbstractSolver<Integer> solver = new IslandSolver<>(grid);
 
         Result r = solver.solve();
         boolean[][] visited = (boolean[][]) r.get(Result.Key.Visited);
         System.out.println(Arrays.deepToString(visited));
-
     }
 }
