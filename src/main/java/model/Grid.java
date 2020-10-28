@@ -1,6 +1,7 @@
 package model;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
@@ -74,6 +75,8 @@ public class Grid<E> {
     }
 
     @RequiredArgsConstructor(staticName = "of")
+    @ToString
+    @Getter
     public static class Cell<T> {
         final T content;
         final Coordinate coordinate;
@@ -105,6 +108,10 @@ public class Grid<E> {
         if (c > maxCol || c < 0) throw new IllegalArgumentException("row index > rowMax");
 
         return elements[r][c];
+    }
+
+    public E value(Coordinate coordinate){
+        return value(coordinate.row,coordinate.col);
     }
 
     public int maxRow() {

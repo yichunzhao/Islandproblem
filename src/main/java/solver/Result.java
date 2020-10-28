@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Data(staticConstructor = "create")
 public class Result {
-    public enum Key {Visited, Solution}
+    public enum Key {Visited, Solution,Cell}
 
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
