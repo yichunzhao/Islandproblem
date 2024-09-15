@@ -35,7 +35,5 @@ public class SolvingIslandProblem {
 
         deque.forEach(System.out::println);
         System.out.println("size of stack: " + deque.size());
-
-
     }
 }
