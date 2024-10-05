@@ -1,7 +1,6 @@
 package graph;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,20 +13,22 @@ import java.util.Map;
  * directed graph: a graph in which the edges have a direction.
  */
 
-@NoArgsConstructor
+@Getter
 public class Graph {
     /**
      * A collection of vertices, a node in a graph.
      * <p>
      * a vertex has a unique label to identify it.
      * -- GETTER --
-     *  getting the vertices of the graph.
-     *  <p>
-     *  return the vertices of the graph.
-
+     * getting the vertices of the graph.
+     * <p>
+     * return the vertices of the graph.
      */
-    @Getter
-    private final Map<String, Vertex> vertices = new HashMap<>();
+    private final Map<String, Vertex> vertices;
+
+    public Graph() {
+        this.vertices = new HashMap<>();
+    }
 
     /**
      * adding an edge to the graph.
