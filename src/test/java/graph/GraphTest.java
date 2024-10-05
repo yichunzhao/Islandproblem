@@ -10,31 +10,31 @@ class GraphTest {
     @Test
     void addVertex_addsVertexToGraph() {
         Graph graph = new Graph();
-        graph.addVertex("A");
+        graph.addVertex(new Vertex("A"));
         assertTrue(graph.getVertices().containsKey("A"));
     }
 
     @Test
     void addEdge_addsEdgeBetweenExistingVertices() {
         Graph graph = new Graph();
-        graph.addVertex("A");
-        graph.addVertex("B");
+        graph.addVertex(new Vertex("A"));
+        graph.addVertex(new Vertex("B"));
         graph.addEdge("A", "B");
-        assertTrue(graph.getVertices().get("A").getAdjacentVertexes().contains(graph.getVertices().get("B")));
-        assertTrue(graph.getVertices().get("B").getAdjacentVertexes().contains(graph.getVertices().get("A")));
+        assertTrue(graph.getVertex("A").getAdjacentVertexes().contains(graph.getVertex("B").getLabel()));
+        assertTrue(graph.getVertex("B").getAdjacentVertexes().contains(graph.getVertex("A").getLabel()));
     }
 
     @Test
     void addEdge_throwsExceptionWhenSourceVertexNotFound() {
         Graph graph = new Graph();
-        graph.addVertex("B");
+        graph.addVertex(new Vertex("A"));
         assertThrows(IllegalArgumentException.class, () -> graph.addEdge("A", "B"));
     }
 
     @Test
     void addEdge_throwsExceptionWhenTargetVertexNotFound() {
         Graph graph = new Graph();
-        graph.addVertex("A");
+        graph.addVertex(new Vertex("A"));
         assertThrows(IllegalArgumentException.class, () -> graph.addEdge("A", "B"));
     }
 

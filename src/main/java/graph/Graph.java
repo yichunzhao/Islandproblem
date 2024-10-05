@@ -1,6 +1,7 @@
 package graph;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,18 +13,21 @@ import java.util.Map;
  * <p>
  * directed graph: a graph in which the edges have a direction.
  */
-@Getter
+
+@NoArgsConstructor
 public class Graph {
     /**
      * A collection of vertices, a node in a graph.
      * <p>
      * a vertex has a unique label to identify it.
-     */
-    private final Map<String, Vertex> vertices;
+     * -- GETTER --
+     *  getting the vertices of the graph.
+     *  <p>
+     *  return the vertices of the graph.
 
-    public Graph() {
-        this.vertices = new HashMap<>();
-    }
+     */
+    @Getter
+    private final Map<String, Vertex> vertices = new HashMap<>();
 
     /**
      * adding an edge to the graph.
@@ -44,23 +48,15 @@ public class Graph {
         targetVertex.addAdjacentVertex(sourceVertex);
     }
 
-    /**
-     * adding a vertex to the graph.
-     *
-     * @param label the label of the vertex.
-     *              return the graph.
-     */
-    public void addVertex(String label) {
-        vertices.put(label, new Vertex(label));
+    public void addVertex(Vertex vertex) {
+        vertices.putIfAbsent(vertex.getLabel(), vertex);
     }
 
-    /**
-     * getting the vertices of the graph.
-     * <p>
-     * return the vertices of the graph.
-     */
-    public Map<String, Vertex> getVertices() {
-        return vertices;
+    public Vertex getVertex(String label) {
+        if (!vertices.containsKey(label)) {
+            throw new IllegalArgumentException("Vertex not found");
+        }
+        return vertices.get(label);
     }
 
     public void printGraph() {
@@ -68,7 +64,7 @@ public class Graph {
             System.out.println("Vertex: " + entry.getKey());
 
             entry.getValue().getAdjacentVertexes()
-                    .forEach(vertex -> System.out.println(" -> " + vertex.getLabel()));
+                    .forEach(label -> System.out.println(" -> " + label));
         }
     }
 }

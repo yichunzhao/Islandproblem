@@ -2,7 +2,10 @@ package graph;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class VertexTest {
@@ -19,7 +22,7 @@ class VertexTest {
         Vertex vertexA = new Vertex("A");
         Vertex vertexB = new Vertex("B");
         vertexA.addAdjacentVertex(vertexB);
-        assertTrue(vertexA.getAdjacentVertexes().contains(vertexB));
+        assertTrue(vertexA.hasAdjacentVertex(vertexB));
     }
 
     @Test
@@ -32,5 +35,25 @@ class VertexTest {
 
         assertEquals(1, vertexA.getAdjacentVertexes().size());
         assertEquals(1, vertexB.getAdjacentVertexes().size());
+    }
+
+    @Test
+    void addAdjacentVertexes_addsMultipleVertices() {
+        Vertex vertexA = new Vertex("A");
+        Vertex vertexB = new Vertex("B");
+        Vertex vertexC = new Vertex("C");
+
+        vertexA.addAdjacentVertexes(List.of(vertexB, vertexC));
+        assertTrue(vertexA.hasAdjacentVertex(vertexB));
+        assertTrue(vertexA.hasAdjacentVertex(vertexC));
+    }
+
+    @Test
+    void addAdjacentVertexes_throwsExceptionWhenNull() {
+        Vertex vertexA = new Vertex("A");
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> vertexA.addAdjacentVertexes(null));
+
+        assertEquals("vertexes cannot be null", exception.getMessage());
     }
 }
