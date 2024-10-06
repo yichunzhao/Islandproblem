@@ -15,7 +15,10 @@ import java.util.List;
 @EqualsAndHashCode
 public class Vertex {
 
+    private boolean visited;
+
     private final String label;
+
     private final List<String> adjacentVertexes;
 
     public Vertex(String label) {
