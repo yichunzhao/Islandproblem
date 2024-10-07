@@ -14,9 +14,9 @@ public class GraphUntil {
      * @param graph       the graph to perform DFS on
      * @param startVertex the starting vertex for the DFS
      * @throws IllegalArgumentException if the startVertex is not found in the graph
-     * This method logs the process of visiting each vertex. It marks the start vertex as visited,
-     * then uses a stack to explore each adjacent vertex. If an adjacent vertex has not been visited,
-     * it is marked as visited and its adjacent vertices are pushed onto the stack for further exploration.
+     *                                  This method logs the process of visiting each vertex. It marks the start vertex as visited,
+     *                                  then uses a stack to explore each adjacent vertex. If an adjacent vertex has not been visited,
+     *                                  it is marked as visited and its adjacent vertices are pushed onto the stack for further exploration.
      */
     public void dfsIterative(Graph graph, Vertex startVertex) {
         if (graph == null) {
@@ -36,6 +36,7 @@ public class GraphUntil {
 
         // while the stack is not empty
         while (!stack.isEmpty()) {
+            System.out.println("stack: " + stack);
             // get the next vertex
             String vertexLabel = stack.pop();
             Vertex vertex = graph.getVertex(vertexLabel);
@@ -47,7 +48,12 @@ public class GraphUntil {
                 vertex.setVisited(true);
 
                 // get the adjacent vertexes of the vertex, push them to the stack one by one
-                vertex.getAdjacentVertexes().forEach(stack::push);
+                vertex.getAdjacentVertexes().forEach(av -> {
+                    Vertex adjacentVertex = graph.getVertex(av);
+                    if (!adjacentVertex.isVisited()) {
+                        stack.push(adjacentVertex.getLabel());
+                    }
+                });
             }
         }
     }
