@@ -28,6 +28,7 @@ public class GraphUntil {
         }
 
         log.info("Depth First Search (DFS) starting from: " + startVertex.getLabel());
+        System.out.println("Visiting vertex: " + startVertex.getLabel());
         startVertex.setVisited(true);
 
         Deque<String> stack = new ArrayDeque<>();
@@ -79,6 +80,7 @@ public class GraphUntil {
 
         log.info("Breadth First Search (BFS) starting from: " + startVertex.getLabel());
         startVertex.setVisited(true);
+        System.out.println("Visiting vertex: " + startVertex.getLabel());
 
         Deque<String> queue = new ArrayDeque<>();
 

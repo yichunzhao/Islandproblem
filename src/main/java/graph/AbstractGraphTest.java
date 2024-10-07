@@ -1,8 +1,7 @@
 package graph;
 
-public class VisitGraphNodes {
-
-    public static void main(String[] args) {
+public class AbstractGraphTest {
+    protected static Graph createGraph() {
         Graph graph = new Graph();
 
         var vertexA = new Vertex("A");
@@ -22,7 +21,6 @@ public class VisitGraphNodes {
         graph.addEdge("E", "F");
         graph.addEdge("A", "F");
 
-        GraphUntil graphUntil = new GraphUntil();
-        graphUntil.dfsIterative(graph, vertexA);
+        return graph;
     }
 }
